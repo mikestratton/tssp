@@ -39,7 +39,7 @@ function tssp_menu(){
 
 	// Admin configuration group.
 	$items['admin/config/tssp'] = array(
-			'title' => 'TSSO',
+			'title' => 'TSSP',
 			'description' => 'Administer TSSP',
 			'access arguments' => array('administer tssp'),
 	);
