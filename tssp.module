@@ -13,9 +13,13 @@ function tssp_help($path, $arg){
 		case 'admin/help#tssp':{
 			$ret_val = '<h3>' . t('About') . '</h3>';
 			$ret_val .= '<p>' . t('Module created to meet specific use cases in the development of TSSP2016. <br />Module Author: Michael A. Stratton.') . '</p><br />';
+                        $ret_val .= '<hr>';
                         $ret_val .= '<h4>' . t('Use Case I: Aircraft Issues Menu') . '</h4>';
                         $ret_val .= '<p>' . t('Hook implementations for user-created content types <br />'
                                             . 'https://api.drupal.org/api/drupal/modules!node!node.module/group/node_content/7.x.') . '</p>';
+                        $ret_val .= '<p>' . t('Query: SELECT aircrafts FROM aircraft_issues') . '</p>';
+                        $ret_val .= '<p>' . t('If active == false do not display') . '</p>';
+                        $ret_val .= '<p>' . t('UI: Drop down menu only') . '</p>';
                         return $ret_val;
 			break;
 		}
