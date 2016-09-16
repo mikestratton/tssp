@@ -1,0 +1,8 @@
+name = TSSP
+description = Custom module developed to meet unique software use cases.
+core = 7.x
+
+; version: common naming conventions: dev alpha beta rc
+version = 7.x-0.1-dev
+
+configure = admin/config/tssp/manage
