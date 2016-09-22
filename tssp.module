@@ -25,3 +25,41 @@ function tssp_help($path, $arg){
 		}
 	}
 }
+
+/**
+ * Implements hook_menu().
+ */
+function form_example_menu() {
+  $items = array();
+
+  $items['examples/form-example'] = array( //this creates a URL that will call this form at "examples/form-example"
+    'title' => 'Example Form', //page title
+    'description' => 'A form to mess around with.',
+    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+    'page arguments' => array('form_example_form'), //put the name of the form here
+    'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_form().
+ */
+function node_content_form($node, $form_state) {
+  $form = array();
+  $type = node_type_get_type($node);
+
+  if ($type->has_title) {
+    $form['title'] = array(
+      '#type' => 'textfield',
+      '#title' => check_plain($type->title_label),
+      '#required' => TRUE,
+      '#default_value' => $node->title,
+      '#maxlength' => 255,
+      '#weight' => -5,
+    );
+  }
+
+  return $form;
+}
