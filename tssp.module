@@ -46,20 +46,26 @@ function form_example_menu() {
 /**
  * Implements hook_form().
  */
-function ncf($node, $form_state) {
-  $form = array();
-  $type = node_type_get_type($node);
+function form_example_form($form, &$form_state) {
+  
+ $form['price'] = array(
+    '#type' => 'textfield', //you can find a list of available types in the form api
+    '#title' => 'What is Your Price?',
+    '#size' => 10,
+    '#maxlength' => 10,
+    '#required' => TRUE, //make this field required 
+  );
 
-  if ($type->has_title) {
-    $form['title'] = array(
-      '#type' => 'textfield',
-      '#title' => check_plain($type->title_label),
-      '#required' => TRUE,
-      '#default_value' => $node->title,
-      '#maxlength' => 255,
-      '#weight' => -5,
-    );
-  }
-
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Click Here!'),
+  );
+  
   return $form;
+}
+
+function form_example_form_validate($form, &$form_state) {
+}
+
+function form_example_form_submit($form, &$form_state) {
 }
