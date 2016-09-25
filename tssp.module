@@ -17,9 +17,28 @@ function tssp_help($path, $arg){
                         $ret_val .= '<h4>' . t('Use Case I: Aircraft Issues Menu') . '</h4>';
                         $ret_val .= '<p>' . t('Hook implementations for user-created content types <br />'
                                             . 'https://api.drupal.org/api/drupal/modules!node!node.module/group/node_content/7.x.') . '</p>';
-                        $ret_val .= '<p>' . t('Query: SELECT aircrafts FROM aircraft_issues') . '</p>';
-                        $ret_val .= '<p>' . t('If active == false do not display') . '</p>';
-                        $ret_val .= '<p>' . t('UI: Drop down menu only') . '</p>';
+                        $ret_val .= '<p>' . t('two drupal content types. <br />
+										content_type1 = aircraft <br />
+										content_type2 = aircraft_issues') . '</p>';
+                        $ret_val .= '<p>' . t('aircraft has the fields(not complete list): <br />
+										tail_number(text) <br />
+										active(boolean)') . '</p>';
+                        $ret_val .= '<p>' . t('aircraft_issues has the fields:<br />
+										issue_name(text)<br />
+										aircraft_tail_number(entity_reference to aircraft table) <br />
+										description(text_area)') . '</p>';
+						$ret_val .= '<p>' . t('show a drop down menu that lists all aircrafts from the aircraft_issues table. <br />
+												Only aircraft that are listed as "active(boolean field)" in the "aircrafts" table should be displayed in the menu.<br />
+												PSEUDO CODE:<br />
+												SELECT aircrafts FROM aircraft_issues<br />
+												if (TABLE == aircrafts && active == false) {<br />
+													do not display taxi in menu<br />
+													}<br />
+													else { display taxi in menu }') . '</p>';
+						$ret_val .= '<p>' . t('If the user selects the an aircraft from the drop down menu, all known issues for that particular aircraft will be listed in a table format.<br />
+												PSEUDO CODE:<br />
+												SELECT issue_name, description FROM aircraft_issues WHERE aircraft_name = menu_selection') . '</p>';
+						$ret_val .= '<p>' . t('UI: Drop down menu only') . '</p>';
                         return $ret_val;
 			break;
 		}
